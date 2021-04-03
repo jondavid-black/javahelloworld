@@ -25,16 +25,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Setup GraalVM CE
-  # You may pin to the exact commit or the version.
-  # uses: rinx/setup-graalvm-ce@a3ebf2ad3b7098978b0441c777b72c3a234fdba9
-  uses: rinx/setup-graalvm-ce@v0.0.1
-  with:
-    # GraalVM version: ex.) 19.3.0
-    graalvm-version: # default is 19.3.0
-    # Java version: ex.) java8, java11
-    java-version: java11 # default is java8
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - uses: DeLaGuardo/setup-graalvm@4.0
+        with:
+          # GraalVM version, no pattern syntax available atm
+          graalvm: '21.0.0.2'
+          # Java version, optional, defaults to 'java8'. Available options are 'java8' and 'java11'.
+          java: 'java11'
+          # Architecture flag, optional, defaults to 'amd64'. Available options are 'amd64' and 'aarch64'. Later is available only for linux runners.
+          arch: 'amd64'
+      - run: java -version
