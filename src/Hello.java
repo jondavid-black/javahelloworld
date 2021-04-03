@@ -1,5 +1,3 @@
-package org.hello;
-
 // Simple hello world.
 
 public class Hello {
